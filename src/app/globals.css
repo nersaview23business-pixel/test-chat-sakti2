@@ -1,26 +1,106 @@
+/* ===== PERUBAHAN DI SINI: Sesuaikan dengan Aturan Tailwind v4 ===== */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ================================================== */
+/* ----- KUMPULAN CUSTOM UTILITY CLASS KITA ----- */
+/* ================================================== */
+
+/**
+ * Efek Background Titik-titik
+ */
+.dotted-bg {
+  background-image: radial-gradient(circle at 1px 1px, #d1d5db 1px, transparent 0);
+  background-size: 1.5rem 1.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/**
+ * Efek Bayangan Halus Custom
+ */
+.custom-shadow {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/**
+ * Custom Style untuk Notifikasi Kaca Es (Frosted Glass) Anti Gagal
+ */
+.frost-toast-style {
+  background-color: rgba(249, 250, 251, 0.75); /* Abu-abu sangat terang & sedikit transparan */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+  color: #111827; /* Teks Hitam */
+  padding: 12px 18px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+/* ================================================== */
+/* ----- KUMPULAN EFEK ANIMASI ----- */
+/* ================================================== */
+
+/**
+ * Animasi Garis dengan Gradasi Warna
+ */
+.animated-gradient-line {
+  height: 2px;
+  width: 100%;
+  background-size: 200% 200%;
+  background-image: linear-gradient(
+    -45deg,
+    #f59e0b, /* amber-500 */
+    #ef4444, /* red-500 */
+    #3b82f6, /* blue-500 */
+    #8b5cf6  /* violet-500 */
+  );
+  animation: gradient-animation 4s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/**
+ * Animasi Teks Mengetik
+ */
+.typing-animation {
+  overflow: hidden;
+  border-right: .15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: 
+    typing 3.5s steps(40, end) infinite,
+    blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+
+/* ================================================== */
+/* ----- EFEK SPESIFIK UNTUK LAYOUT ----- */
+/* ================================================== */
+
+/**
+ * Efek lengkungan di pertemuan sidebar dan header.
+ */
+.sidebar-corner {
+  position: absolute;
+  top: 64px; /* Setinggi Top Bar (h-16) */
+  left: 100%; /* Mulai dari tepi kanan sidebar */
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  /* Trik bayangan yang warnanya sama dengan background konten (bg-gray-50) */
+  box-shadow: -10px -10px 0 10px #f9fafb; 
+  border-top-left-radius: 20px;
 }
